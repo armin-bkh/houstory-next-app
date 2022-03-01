@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Input from "components/common/Input/Input";
 import Head from "next/head";
 import { useFormik } from "formik";
@@ -39,14 +38,14 @@ const Registery = () => {
         <meta name="description" content="registery in houstory" />
       </Head>
       <main className="bg-neutral-800 min-h-screen flex justify-center p-5">
-        <form onSubmit={formik.handleSubmit} className="p-2 w-1/2">
+        <form onSubmit={formik.handleSubmit} className="p-2 w-full md:w-1/2">
           <Input
             type="text"
             id="name"
             name="name"
             lbl="name"
             formik={formik}
-            {...formik.getFieldProps('name')}
+            {...formik.getFieldProps("name")}
             placeholder="enter your name"
           />
           <Input
@@ -55,7 +54,7 @@ const Registery = () => {
             name="email"
             lbl="email"
             formik={formik}
-            {...formik.getFieldProps('email')}
+            {...formik.getFieldProps("email")}
             placeholder="enter your email"
           />
           <Input
@@ -64,7 +63,7 @@ const Registery = () => {
             name="password"
             lbl="password"
             formik={formik}
-            {...formik.getFieldProps('password')}
+            {...formik.getFieldProps("password")}
             placeholder="enter secure password"
           />
           <button
