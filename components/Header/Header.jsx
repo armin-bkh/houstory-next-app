@@ -5,8 +5,15 @@ import { useState } from "react";
 
 const Header = () => {
   const [isShow, setIsShow] = useState(false);
-  const { auth } = useAuth();
+  const { auth, setAuth } = useAuth();
   const router = useRouter();
+
+  const clickHandler = () => {
+    if (!auth) {
+      router.push("/auth/login");
+    } else setAuth(null);
+    setIsShow(false);
+  };
 
   return (
     <>
@@ -31,12 +38,12 @@ const Header = () => {
           this is where we tell stories
         </h1>
         <button
-          onClick={() => router.push(`/auth/${auth ? "register" : "login"}`)}
+          onClick={clickHandler}
           className="ml-auto hidden md:block bg-black px-3
          md:px-5 py-1 rounded-sm text-white hover:outline-offset-2
           outline-2 hover:outline hover:outline-black"
         >
-          {auth ? "register" : "login"}
+          {auth ? "sign out" : "login"}
         </button>
       </header>
       <Navbar isShow={isShow} setIsShow={setIsShow} />

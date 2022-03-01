@@ -1,16 +1,20 @@
 import { AuthContext } from "context/AuthContext";
-import { useCookies } from "hooks/useCookies";
+import { getCookies } from "utils/getCookies";
 import { useState, useContext, useEffect } from "react";
 
 const AuthProvider = ({ children }) => {
   const [auth, setAuth] = useState(null);
-  const cookies = useCookies();
 
   useEffect(() => {
-    if (cookies && cookies.houstory) {
-      console.log(1);
+    const cookies = getCookies();
+    if (cookies.houstoryUser) {
+      setAuth(JSON.parse(cookies.houstoryUser));
     }
-  }, [cookies]);
+  }, []);
+
+  useEffect(() => {
+    document.cookie = `houstoryUser=${JSON.stringify(auth)}`;
+  }, [auth]);
 
   return (
     <AuthContext.Provider value={{ auth, setAuth }}>

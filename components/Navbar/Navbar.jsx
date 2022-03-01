@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { HomeIcon, NewspaperIcon, PhoneIcon } from "@heroicons/react/outline";
 import { UserGroupIcon, FingerPrintIcon } from "@heroicons/react/solid";
+import { useRouter } from "next/router";
 
 const links = [
   { id: 1, title: "home", href: "/", icon: HomeIcon },
@@ -43,18 +44,24 @@ const Navbar = ({ isShow, setIsShow }) => {
 export default Navbar;
 
 const NavItem = ({ Icon, link, handleClose }) => {
+  const router = useRouter();
+
   return (
-      <li
-        className="text-white hover:scale-125 transition"
-        key={link.id}
-        onClick={handleClose}
-      >
-        <Link href={link.href}>
-          <a className="px-4 py-1 inline-flex items-center">
-            <Icon className="mr-2 w-5" />
-            {link.title}
-          </a>
-        </Link>
-      </li>
+    <li
+      className="text-white hover:scale-125 transition"
+      key={link.id}
+      onClick={handleClose}
+    >
+      <Link href={link.href}>
+        <a
+          className={`px-4 py-1 inline-flex items-center capitalize tracking-widest ${
+            router.pathname === link.href && "text-amber-200"
+          }`}
+        >
+          <Icon className="mr-2 w-5" />
+          {link.title}
+        </a>
+      </Link>
+    </li>
   );
 };

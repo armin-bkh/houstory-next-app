@@ -6,6 +6,7 @@ import { registerUser } from "services/registerUser";
 import { useAuth } from "@/providers/AuthProvider/AuthProvider";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import Link from "next/link";
 
 const initialValues = {
   name: "",
@@ -52,8 +53,8 @@ const RegisterPage = () => {
   return (
     <>
       <Head>
-        <title>houstory: registery</title>
-        <meta name="description" content="registery in houstory" />
+        <title>houstory: register</title>
+        <meta name="description" content="register in houstory" />
       </Head>
       <main className="bg-neutral-800 min-h-screen flex justify-center p-5">
         <form onSubmit={formik.handleSubmit} className="p-2 w-full md:w-1/2">
@@ -95,6 +96,13 @@ const RegisterPage = () => {
           >
             register
           </button>
+          <div className="flex justify-center items-center h-12">
+            <Link href="/auth/login">
+              <a className="text-amber-100 hover:text-amber-200 transition">
+                do you have an account?
+              </a>
+            </Link>
+          </div>
         </form>
       </main>
     </>
