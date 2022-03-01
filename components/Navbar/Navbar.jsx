@@ -4,15 +4,15 @@ const links = [
   { id: 1, title: "home", href: "/" },
   { id: 2, title: "blogs", href: "/blogs" },
   { id: 3, title: "about", href: "/about" },
-  { id: 3, title: "contact", href: "/contact" },
-  { id: 3, title: "login", href: "/login" },
+  { id: 4, title: "contact", href: "/contact" },
+  { id: 5, title: "login", href: "/login" },
 ];
 
-const Navbar = ({ isShow }) => {
+const Navbar = ({ isShow, setIsShow }) => {
   return (
     <>
       <div
-        className={`fixed duration-700 ease-in-out w-full lg:w-1/2 bg-neutral-700 h-screen flex justify-center items-center top-0 transition-all ${
+        className={`z-40 fixed duration-700 ease-in-out w-full lg:w-1/2 bg-neutral-700 h-screen flex justify-center items-center top-0 transition-all ${
           isShow ? "left-0" : "-left-full"
         }`}
       >
@@ -22,6 +22,7 @@ const Navbar = ({ isShow }) => {
               <li
                 className="text-white hover:scale-125 transition"
                 key={link.id}
+                onClick={()=> setIsShow(false)}
               >
                 <Link href={link.href}>
                   <a className="px-4 py-1 inline-block">{link.title}</a>
@@ -32,7 +33,7 @@ const Navbar = ({ isShow }) => {
         </nav>
       </div>
       <div
-        className={`fixed h-screen duration-700 ease-in-out bg-neutral-700 w-1/2 transition-all top-0 ${
+        className={`z-40 fixed h-screen duration-700 ease-in-out bg-neutral-700 w-1/2 transition-all top-0 ${
           isShow ? "-right-full lg:right-0" : "-right-full"
         }`}
       ></div>

@@ -5,26 +5,22 @@ const Header = () => {
   const [isShow, setIsShow] = useState(false);
   return (
     <>
-      <header className="flex items-center p-5 overflow-hidden bg-neutral-100 shadow">
+      <header className="flex sticky top-0 z-50 items-center p-5 overflow-hidden bg-neutral-100 shadow">
         <button
-          className="z-50"
+          className="relative z-50"
           onClick={() => setIsShow((prevIsShow) => !prevIsShow)}
         >
           <div
-            className={`w-7 h-1 rounded-sm ${
-              isShow ? "bg-white w-6" : "bg-black"
+            className={`w-7 h-1 rounded-sm bg-black ${
+              isShow && "w-6"
             } transition-all`}
           ></div>
           <div
-            className={`w-7 h-1 rounded-sm ${
-              isShow ? "bg-white w-5" : "bg-black"
+            className={`w-7 h-1 rounded-sm bg-black ${
+              isShow && "w-5"
             } my-1 transition-all`}
           ></div>
-          <div
-            className={`w-7 h-1 rounded-sm ${
-              isShow ? "bg-white" : "bg-black"
-            } transition-all`}
-          ></div>
+          <div className={`w-7 h-1 rounded-sm bg-black transition-all`}></div>
         </button>
         <h1 className="ml-5 text-lg md:text-2xl">
           this is where we tell stories
@@ -37,7 +33,7 @@ const Header = () => {
           login
         </button>
       </header>
-      <Navbar isShow={isShow} />
+      <Navbar isShow={isShow} setIsShow={setIsShow} />
     </>
   );
 };
