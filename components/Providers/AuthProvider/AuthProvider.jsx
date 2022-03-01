@@ -3,15 +3,17 @@ import { useCookies } from "hooks/useCookies";
 import { useState, useContext, useEffect } from "react";
 
 const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [auth, setAuth] = useState(null);
   const cookies = useCookies();
+
   useEffect(() => {
     if (cookies && cookies.houstory) {
       console.log(1);
     }
   }, [cookies]);
+
   return (
-    <AuthContext.Provider value={{ user, setUser }}>
+    <AuthContext.Provider value={{ auth, setAuth }}>
       {children}
     </AuthContext.Provider>
   );
