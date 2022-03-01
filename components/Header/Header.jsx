@@ -5,7 +5,7 @@ const Header = () => {
   const [isShow, setIsShow] = useState(false);
   return (
     <>
-      <header className="flex items-center p-5 overflow-hidden">
+      <header className="flex items-center p-5 overflow-hidden bg-neutral-100 shadow">
         <button
           className="z-50"
           onClick={() => setIsShow((prevIsShow) => !prevIsShow)}
