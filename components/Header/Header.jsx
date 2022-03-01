@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <>
       <header className="flex items-center p-5 overflow-hidden">
-        <div
+        <button
           className="z-50"
           onClick={() => setIsShow((prevIsShow) => !prevIsShow)}
         >
@@ -25,7 +25,7 @@ const Header = () => {
               isShow ? "bg-white" : "bg-black"
             } transition-all`}
           ></div>
-        </div>
+        </button>
         <h1 className="ml-5 text-lg md:text-2xl">
           this is where we tell stories
         </h1>
