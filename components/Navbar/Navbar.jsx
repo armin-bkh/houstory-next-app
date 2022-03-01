@@ -1,11 +1,13 @@
 import Link from "next/link";
+import { HomeIcon, NewspaperIcon, PhoneIcon } from "@heroicons/react/outline";
+import { UserGroupIcon, FingerPrintIcon } from "@heroicons/react/solid";
 
 const links = [
-  { id: 1, title: "home", href: "/" },
-  { id: 2, title: "blogs", href: "/blogs" },
-  { id: 3, title: "about", href: "/about" },
-  { id: 4, title: "contact", href: "/contact" },
-  { id: 5, title: "login", href: "/login" },
+  { id: 1, title: "home", href: "/", icon: HomeIcon },
+  { id: 2, title: "blogs", href: "/blogs", icon: NewspaperIcon },
+  { id: 3, title: "about", href: "/about", icon: UserGroupIcon },
+  { id: 4, title: "contact", href: "/contact", icon: PhoneIcon },
+  { id: 5, title: "registery", href: "/auth/registery", icon: FingerPrintIcon },
 ];
 
 const Navbar = ({ isShow, setIsShow }) => {
@@ -19,15 +21,12 @@ const Navbar = ({ isShow, setIsShow }) => {
         <nav>
           <ul>
             {links.map((link) => (
-              <li
-                className="text-white hover:scale-125 transition"
+              <NavItem
                 key={link.id}
-                onClick={()=> setIsShow(false)}
-              >
-                <Link href={link.href}>
-                  <a className="px-4 py-1 inline-block">{link.title}</a>
-                </Link>
-              </li>
+                link={link}
+                Icon={link.icon}
+                handleClose={() => setIsShow(false)}
+              />
             ))}
           </ul>
         </nav>
@@ -42,3 +41,20 @@ const Navbar = ({ isShow, setIsShow }) => {
 };
 
 export default Navbar;
+
+const NavItem = ({ Icon, link, handleClose }) => {
+  return (
+      <li
+        className="text-white hover:scale-125 transition"
+        key={link.id}
+        onClick={handleClose}
+      >
+        <Link href={link.href}>
+          <a className="px-4 py-1 inline-flex items-center">
+            <Icon className="mr-2 w-5" />
+            {link.title}
+          </a>
+        </Link>
+      </li>
+  );
+};
