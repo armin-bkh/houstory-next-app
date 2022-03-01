@@ -1,20 +1,36 @@
 import { useState } from "react";
 import Input from "components/common/Input/Input";
 import Head from "next/head";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+
+const initialValues = {
+  name: "",
+  email: "",
+  password: "",
+};
+
+const validationSchema = Yup.object({
+  name: Yup.string().required("your name is required"),
+  email: Yup.string()
+    .email("email address is  invalid")
+    .required("your email is required"),
+  password: Yup.string()
+    .min(5, "password must equal or bigger than 5")
+    .required("password is required"),
+});
 
 const Registery = () => {
-  const [formValues, setFormValues] = useState({
-    name: "",
-    email: "",
-    password: "",
-  });
-
-  const changeHandler = (e) => {
-    setFormValues({
-      ...formValues,
-      [e.target.name]: e.target.value,
-    });
+  const onSubmit = async (values) => {
+    console.log(values);
   };
+
+  const formik = useFormik({
+    initialValues,
+    onSubmit,
+    validationSchema,
+    validateOnMount: true,
+  });
 
   return (
     <>
@@ -23,14 +39,14 @@ const Registery = () => {
         <meta name="description" content="registery in houstory" />
       </Head>
       <main className="bg-neutral-800 min-h-screen flex justify-center p-5">
-        <form className="p-2 w-1/2">
+        <form onSubmit={formik.handleSubmit} className="p-2 w-1/2">
           <Input
             type="text"
             id="name"
             name="name"
             lbl="name"
-            onChange={changeHandler}
-            value={formValues.name}
+            formik={formik}
+            {...formik.getFieldProps('name')}
             placeholder="enter your name"
           />
           <Input
@@ -38,8 +54,8 @@ const Registery = () => {
             id="email"
             name="email"
             lbl="email"
-            onChange={changeHandler}
-            value={formValues.email}
+            formik={formik}
+            {...formik.getFieldProps('email')}
             placeholder="enter your email"
           />
           <Input
@@ -47,11 +63,17 @@ const Registery = () => {
             id="password"
             name="password"
             lbl="password"
-            onChange={changeHandler}
-            value={formValues.password}
+            formik={formik}
+            {...formik.getFieldProps('password')}
             placeholder="enter secure password"
           />
-          <button className="bg-amber-200 py-2 w-full rounded-sm mt-20" type="submit">registery</button>
+          <button
+            className="bg-amber-200 py-2 w-full rounded-sm mt-20 disabled:opacity-60 transition"
+            type="submit"
+            disabled={!formik.isValid}
+          >
+            registery
+          </button>
         </form>
       </main>
     </>
