@@ -1,8 +1,13 @@
+import { useAuth } from "@/providers/AuthProvider/AuthProvider";
 import Navbar from "components/Navbar/Navbar";
+import { useRouter } from "next/router";
 import { useState } from "react";
 
 const Header = () => {
   const [isShow, setIsShow] = useState(false);
+  const { auth } = useAuth();
+  const router = useRouter();
+
   return (
     <>
       <header className="flex sticky top-0 z-50 items-center p-5 overflow-hidden bg-neutral-100 shadow">
@@ -26,11 +31,12 @@ const Header = () => {
           this is where we tell stories
         </h1>
         <button
+          onClick={() => router.push(`/auth/${auth ? "register" : "login"}`)}
           className="ml-auto hidden md:block bg-black px-3
          md:px-5 py-1 rounded-sm text-white hover:outline-offset-2
           outline-2 hover:outline hover:outline-black"
         >
-          login
+          {auth ? "register" : "login"}
         </button>
       </header>
       <Navbar isShow={isShow} setIsShow={setIsShow} />

@@ -1,6 +1,6 @@
 import http from "services/httpServices";
 
-export const register = (user) => {
+export const registerUser = (user) => {
   const headers = {
     headers: {
       "Content-Type": "application/json",

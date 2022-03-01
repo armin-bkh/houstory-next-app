@@ -7,7 +7,7 @@ const links = [
   { id: 2, title: "blogs", href: "/blogs", icon: NewspaperIcon },
   { id: 3, title: "about", href: "/about", icon: UserGroupIcon },
   { id: 4, title: "contact", href: "/contact", icon: PhoneIcon },
-  { id: 5, title: "registery", href: "/auth/registery", icon: FingerPrintIcon },
+  { id: 5, title: "register", href: "/auth/register", icon: FingerPrintIcon },
 ];
 
 const Navbar = ({ isShow, setIsShow }) => {

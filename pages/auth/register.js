@@ -2,7 +2,7 @@ import Input from "components/common/Input/Input";
 import Head from "next/head";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { register } from "services/register";
+import { registerUser } from "services/registerUser";
 import { useAuth } from "@/providers/AuthProvider/AuthProvider";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -16,7 +16,7 @@ const initialValues = {
 const validationSchema = Yup.object({
   name: Yup.string().required("your name is required"),
   email: Yup.string()
-    .email("email address is  invalid")
+    .email("email address is invalid")
     .required("your email is required"),
   password: Yup.string()
     .min(8, "password must equal or bigger than 8")
@@ -24,14 +24,14 @@ const validationSchema = Yup.object({
     .required("password is required"),
 });
 
-const Register = () => {
+const RegisterPage = () => {
   const { setAuth } = useAuth();
   const router = useRouter();
   const [error, setError] = useState("");
 
   const onSubmit = async (values) => {
     try {
-      const { data } = await register(values);
+      const { data } = await registerUser(values);
       setAuth({
         token: data.token,
         ...values,
@@ -57,6 +57,9 @@ const Register = () => {
       </Head>
       <main className="bg-neutral-800 min-h-screen flex justify-center p-5">
         <form onSubmit={formik.handleSubmit} className="p-2 w-full md:w-1/2">
+          <h1 className="text-amber-200 text-3xl md:text-5xl mb-10">
+            Register
+          </h1>
           <Input
             type="text"
             id="name"
@@ -98,4 +101,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default RegisterPage;
