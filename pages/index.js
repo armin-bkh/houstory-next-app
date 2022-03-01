@@ -20,12 +20,12 @@ export default function Home({ blogs }) {
   return (
     <>
       <Head>
-        <title>houstory: home</title>
+        <title>houstory: Home</title>
       </Head>
       <main>
         <section className="grid grid-cols-1 md:grid-cols-2 h-screen">
           <div className="relative hidden md:block shadow-xl">
-            <Image src="/images/newspaper.jpeg" layout="fill" priority />
+            <Image src="/images/newspaper.jpeg" layout="fill" priority title="news" />
           </div>
           <div className="flex justify-center items-center">
             <h1 className="w-52 text-5xl md:text-6xl font-bold">
@@ -41,10 +41,7 @@ export default function Home({ blogs }) {
               key={blog._id}
             >
               <div className="w-full relative h-60 mb-1">
-                <Image
-                  src={blog.image}
-                  layout="fill"
-                />
+                <Image src={blog.image} layout="fill" alt={blog.title} />
               </div>
               <div className="p-3 flex flex-col">
                 <h4 className="text-sm mb-3">{blog.title}</h4>

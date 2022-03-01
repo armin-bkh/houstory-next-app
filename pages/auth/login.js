@@ -51,7 +51,7 @@ const LoginPage = () => {
   return (
     <>
       <Head>
-        <title>houstory: login</title>
+        <title>houstory: Login</title>
         <meta name="description" content="login in houstory" />
       </Head>
       <main className="bg-neutral-800 min-h-screen flex justify-center p-5">

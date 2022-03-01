@@ -7,6 +7,10 @@ module.exports = {
     extend: {
       backgroundImage: {
         'menu-bg': "url('../public/images/menu.jpeg')",
+      },
+      gridTemplateColumns: {
+        blogsList: '1fr 3fr 2fr',
+        mdBlogList: '2fr 1fr'
       }
     },
   },

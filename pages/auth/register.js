@@ -53,7 +53,7 @@ const RegisterPage = () => {
   return (
     <>
       <Head>
-        <title>houstory: register</title>
+        <title>houstory: Register</title>
         <meta name="description" content="register in houstory" />
       </Head>
       <main className="bg-neutral-800 min-h-screen flex justify-center p-5">
