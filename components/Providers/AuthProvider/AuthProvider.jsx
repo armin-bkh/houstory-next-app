@@ -1,9 +1,15 @@
 import { AuthContext } from "context/AuthContext";
-import { useState, useContext } from "react";
-import { useContext } from "react/cjs/react.production.min";
+import { useCookies } from "hooks/useCookies";
+import { useState, useContext, useEffect } from "react";
 
-const UserProvider = ({ children }) => {
+const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const cookies = useCookies();
+  useEffect(() => {
+    if (cookies && cookies.houstory) {
+      console.log(1);
+    }
+  }, [cookies]);
   return (
     <AuthContext.Provider value={{ user, setUser }}>
       {children}
@@ -11,6 +17,6 @@ const UserProvider = ({ children }) => {
   );
 };
 
-export default UserProvider;
+export default AuthProvider;
 
 export const useAuth = () => useContext(AuthContext);
