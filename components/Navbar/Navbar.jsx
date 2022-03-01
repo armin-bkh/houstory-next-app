@@ -33,7 +33,7 @@ const Navbar = ({ isShow, setIsShow }) => {
         </nav>
       </div>
       <div
-        className={`z-40 fixed h-screen duration-700 ease-in-out bg-neutral-700 w-1/2 transition-all top-0 ${
+        className={`z-40 fixed h-screen duration-700 ease-in-out bg-menu-bg bg-cover w-1/2 transition-all top-0 ${
           isShow ? "-right-full lg:right-0" : "-right-full"
         }`}
       ></div>

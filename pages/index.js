@@ -24,7 +24,7 @@ export default function Home({ blogs }) {
       </Head>
       <main>
         <section className="grid grid-cols-1 md:grid-cols-2 h-screen">
-          <div className="relative hidden md:block">
+          <div className="relative hidden md:block shadow-xl">
             <Image src="/images/newspaper.jpeg" layout="fill" />
           </div>
           <div className="flex justify-center items-center">
@@ -37,7 +37,7 @@ export default function Home({ blogs }) {
           {blogs.map((blog) => (
             <article
               onClick={() => router.push(`/blogs/${blog._id}`)}
-              className="w-full sm:w-80 lg:w-96 shadow-md cursor-pointer rounded-sm overflow-hidden mb-5 md:mb-0 last:mb-0"
+              className="w-full sm:w-80 lg:w-96 shadow-md hover:shadow-xl transition cursor-pointer rounded-sm overflow-hidden mb-5 md:mb-0 last:mb-0"
               key={blog._id}
             >
               <div className="w-full relative h-60 mb-1">

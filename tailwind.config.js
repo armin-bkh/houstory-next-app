@@ -4,7 +4,11 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'menu-bg': "url('../public/images/menu.jpeg')",
+      }
+    },
   },
   plugins: [],
 };
