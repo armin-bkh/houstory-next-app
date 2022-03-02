@@ -15,7 +15,6 @@ const BlogItem = ({ blog }) => {
             src={blog.image}
             layout="fill"
             alt={blog.title}
-            priority
           />
         </div>
         <div className="my-5 h-0.5 w-full rounded-sm bg-black"></div>
