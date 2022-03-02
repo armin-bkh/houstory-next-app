@@ -14,7 +14,6 @@ export const getStaticProps = async () => {
 };
 
 const BlogsPage = ({ blogs }) => {
-  console.log(blogs);
   return (
     <>
       <Head>

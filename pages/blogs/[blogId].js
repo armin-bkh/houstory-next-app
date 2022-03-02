@@ -2,7 +2,6 @@ import BlogDetail from "components/BlogDetail/BlogDetail";
 import CommentsList from "components/CommentsList/CommentsList";
 import CommentForm from "components/CommetForm/CommentForm";
 import Head from "next/head";
-import Image from "next/image";
 
 export const getServerSideProps = async ({ query: { blogId } }) => {
   const { blog } = await (
