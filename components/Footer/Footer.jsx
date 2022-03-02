@@ -23,6 +23,7 @@ const Footer = () => {
         <a
           className="text-blue-500"
           target="_blank"
+          rel="noreferrer"
           href="https://www.freerealapi.com"
         >
           www.freerealapi.com
@@ -37,7 +38,9 @@ const Footer = () => {
               className="text-xl md:text-2xl text-gray-500 hover:text-black transition"
               key={link.href}
             >
-              <a target="_blank" rel="noreferrer" href={link.href}>{link.icon}</a>
+              <a target="_blank" rel="noreferrer" href={link.href}>
+                {link.icon}
+              </a>
             </li>
           ))}
         </ul>

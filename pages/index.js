@@ -25,7 +25,12 @@ export default function Home({ blogs }) {
       <main className="min-h-[75vh]">
         <section className="grid grid-cols-1 md:grid-cols-2 h-[89vh]">
           <div className="relative hidden md:block shadow-xl">
-            <Image src="/images/newspaper.jpeg" layout="fill" priority title="news" />
+            <Image
+              src="/images/newspaper.jpeg"
+              layout="fill"
+              priority
+              alt="news"
+            />
           </div>
           <div className="flex justify-center items-center">
             <h1 className="w-52 text-5xl md:text-6xl font-bold">

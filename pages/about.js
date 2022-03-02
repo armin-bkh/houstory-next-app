@@ -25,6 +25,7 @@ const AboutPage = () => {
             src="/svg/About.svg"
             width={300}
             height={300}
+            alt="values"
           />
           <h3 className="md:text-5xl mb-5 -mt-10 uppercase text-4xl">values</h3>
           <p className="mb-5 md:text-lg text-xs text-center">
