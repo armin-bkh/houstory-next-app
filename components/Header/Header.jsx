@@ -1,12 +1,26 @@
 import { useAuth } from "@/providers/AuthProvider/AuthProvider";
 import Navbar from "components/Navbar/Navbar";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Header = () => {
   const [isShow, setIsShow] = useState(false);
   const { auth, setAuth } = useAuth();
   const router = useRouter();
+
+  const closeMenuHandler = (e) => {
+    if(e.key === "Escape") setIsShow(false);
+
+  }
+
+  useEffect(()=> {
+    document.addEventListener('keydown', closeMenuHandler)
+
+
+    return ()=> {
+      document.removeEventListener('keydown', closeMenuHandler);
+    }
+  }, [])
 
   const clickHandler = () => {
     if (!auth) {

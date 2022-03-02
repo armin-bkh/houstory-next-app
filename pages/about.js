@@ -1,4 +1,3 @@
-import About from "public/svg/About us page-bro.svg";
 import Image from "next/image";
 import Head from "next/head";
 
@@ -6,8 +5,8 @@ const AboutPage = () => {
   return (
     <>
       <Head>
-          <title>houstory: About</title>
-          <meta name="description" content="about houstory team" />
+        <title>houstory: About</title>
+        <meta name="description" content="about houstory team" />
       </Head>
       <main className="min-h-[75vh]">
         <section className="min-h-[89vh] flex flex-col justify-center items-center p-5">
@@ -23,7 +22,7 @@ const AboutPage = () => {
         <section className="min-h-[89vh] flex flex-col justify-center items-center bg-slate-100 p-5">
           <Image
             className="drop-shadow-lg"
-            src={About}
+            src="/svg/About.svg"
             width={300}
             height={300}
           />
