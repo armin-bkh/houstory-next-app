@@ -37,7 +37,7 @@ const Footer = () => {
               className="text-xl md:text-2xl text-gray-500 hover:text-black transition"
               key={link.href}
             >
-              <a href={link.href}>{link.icon}</a>
+              <a target="_blank" rel="noreferrer" href={link.href}>{link.icon}</a>
             </li>
           ))}
         </ul>
