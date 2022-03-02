@@ -14,7 +14,7 @@ const BlogDetail = ({ blog }) => {
             </p>
           ))}
         </div>
-        <Image src={blog.image} layout="fill" />
+        <Image src={blog.image} layout="fill" priority/>
         <div className="absolute z-20 bottom-2 right-2 text-xs text-gray-300 self-start">
           <p className="mt-1">{blog.user.name}</p>
           <p>{blog.user.email}</p>

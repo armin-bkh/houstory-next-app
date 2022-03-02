@@ -2,7 +2,7 @@ import CommentItem from "./CommentItem/CommentItem";
 
 const CommentsList = ({ comments }) => {
   return (
-    <div className="border-t border-black">
+    <div>
       <ul className="p-2">
         {comments.map((comment) => (
           <CommentItem key={comment._id} comment={comment} />

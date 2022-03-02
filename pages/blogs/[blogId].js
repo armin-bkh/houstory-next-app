@@ -1,5 +1,6 @@
 import BlogDetail from "components/BlogDetail/BlogDetail";
 import CommentsList from "components/CommentsList/CommentsList";
+import CommentForm from "components/CommetForm/CommentForm";
 import Head from "next/head";
 import Image from "next/image";
 
@@ -22,7 +23,6 @@ export const getServerSideProps = async ({ query: { blogId } }) => {
 };
 
 const BlogDetailPage = ({ blog, comments }) => {
-  console.log({ blog, comments });
   return (
     <>
       <Head>
@@ -32,6 +32,7 @@ const BlogDetailPage = ({ blog, comments }) => {
       <main className="min-h-[75vh] p-5">
         <section className="w-full md:w-10/12 mx-auto shadow-xl rounded-md overflow-hidden">
           <BlogDetail blog={blog} />
+          <CommentForm blogId={blog._id} />
           <CommentsList comments={comments} />
         </section>
       </main>

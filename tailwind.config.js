@@ -9,7 +9,7 @@ module.exports = {
         'menu-bg': "url('../public/images/menu.jpeg')",
       },
       gridTemplateColumns: {
-        blogsList: '1fr 3fr 2fr',
+        blogsList: '2fr 3.5fr 2.5fr',
         mdBlogList: '2fr 1fr'
       }
     },
