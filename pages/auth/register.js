@@ -5,8 +5,9 @@ import * as Yup from "yup";
 import { registerUser } from "services/registerUser";
 import { useAuth } from "@/providers/AuthProvider/AuthProvider";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useToasts } from "react-toast-notifications";
 
 const initialValues = {
   name: "",
@@ -29,17 +30,23 @@ const RegisterPage = () => {
   const { setAuth } = useAuth();
   const router = useRouter();
   const [error, setError] = useState("");
+  const { addToast } = useToasts();
 
   const onSubmit = async (values) => {
+    addToast("please wait...", { appearance: "info" });
     try {
       const { data } = await registerUser(values);
       setAuth({
         token: data.token,
         ...values,
       });
+      addToast(`welcome to our family ${values.name}`, {
+        appearance: "success",
+      });
       router.push("/");
     } catch (error) {
       setError(error.message);
+      addToast(`${error.message}`, { appearance: "error" });
     }
   };
 
@@ -49,6 +56,10 @@ const RegisterPage = () => {
     validationSchema,
     validateOnMount: true,
   });
+
+  useEffect(() => {
+    if (error) setError("");
+  }, [formik.values]);
 
   return (
     <>

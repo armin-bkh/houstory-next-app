@@ -4,9 +4,10 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useAuth } from "@/providers/AuthProvider/AuthProvider";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { loginUser } from "services/loginUser";
 import Link from "next/link";
+import { useToasts } from "react-toast-notifications";
 
 const initialValues = {
   email: "",
@@ -27,17 +28,21 @@ const LoginPage = () => {
   const { setAuth } = useAuth();
   const router = useRouter();
   const [error, setError] = useState("");
+  const { addToast } = useToasts();
 
   const onSubmit = async (values) => {
+    addToast("please wait...", { appearance: "info" });
     try {
       const { data } = await loginUser(values);
       setAuth({
         token: data.token,
         ...values,
       });
+      addToast("welcome back...", { appearance: "success" });
       router.push("/");
     } catch (error) {
       setError(error.message);
+      addToast(error.message, { appearance: "error" });
     }
   };
 
@@ -47,6 +52,10 @@ const LoginPage = () => {
     validationSchema,
     validateOnMount: true,
   });
+
+  useEffect(() => {
+    if (error) setError("");
+  }, [formik.values]);
 
   return (
     <>
