@@ -1,4 +1,5 @@
 import BlogDetail from "components/BlogDetail/BlogDetail";
+import CommentsList from "components/CommentsList/CommentsList";
 import Head from "next/head";
 import Image from "next/image";
 
@@ -29,7 +30,10 @@ const BlogDetailPage = ({ blog, comments }) => {
         <meta name="description" content={blog.title} />
       </Head>
       <main className="min-h-[75vh] p-5">
-        <BlogDetail blog={blog} />
+        <section className="w-full md:w-10/12 mx-auto shadow-xl rounded-md overflow-hidden">
+          <BlogDetail blog={blog} />
+          <CommentsList comments={comments} />
+        </section>
       </main>
     </>
   );

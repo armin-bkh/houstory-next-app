@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const BlogDetail = ({ blog }) => {
   return (
-    <article className="w-full md:w-10/12 mx-auto shadow-xl rounded-md overflow-hidden">
+    <article>
       <div className="relative w-full h-[65vh]">
         <div className="absolute top-2 left-2 z-20 flex whitespace-nowrap overflow-auto">
           {blog.tags.map((tag, index) => (
@@ -15,6 +15,10 @@ const BlogDetail = ({ blog }) => {
           ))}
         </div>
         <Image src={blog.image} layout="fill" />
+        <div className="absolute z-20 bottom-2 right-2 text-xs text-gray-300 self-start">
+          <p className="mt-1">{blog.user.name}</p>
+          <p>{blog.user.email}</p>
+        </div>
       </div>
       <div className="p-3 text-2xl flex flex-col">
         <h1>{blog.title}</h1>
