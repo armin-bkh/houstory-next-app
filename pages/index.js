@@ -22,8 +22,8 @@ export default function Home({ blogs }) {
       <Head>
         <title>houstory: Home</title>
       </Head>
-      <main>
-        <section className="grid grid-cols-1 md:grid-cols-2 h-screen">
+      <main className="min-h-[75vh]">
+        <section className="grid grid-cols-1 md:grid-cols-2 h-[89vh]">
           <div className="relative hidden md:block shadow-xl">
             <Image src="/images/newspaper.jpeg" layout="fill" priority title="news" />
           </div>

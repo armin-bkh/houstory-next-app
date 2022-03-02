@@ -4,9 +4,9 @@ import { useRouter } from "next/router";
 const BlogItem = ({ blog }) => {
   const router = useRouter();
   return (
-    <article className="h-fit">
+    <article className="h-min">
       <div
-        className="border-b-2 border-black flex flex-col shadow-xl"
+        className="border-b-2 border-black shadow-xl cursor-pointer"
         onClick={() => router.push(`/blogs/${blog._id}`)}
       >
         <div className="relative w-full h-60 overflow-hidden">
@@ -18,7 +18,7 @@ const BlogItem = ({ blog }) => {
           />
         </div>
         <div className="my-5 h-0.5 w-full rounded-sm bg-black"></div>
-        <div className="p-2">
+        <div className="p-2 flex flex-col">
           <h2 className="text-sm lg:text-lg mb-5">{blog.title}</h2>
           <p className="text-xs text-gray-600">
             {blog.text.substring(
@@ -28,7 +28,8 @@ const BlogItem = ({ blog }) => {
             ...
           </p>
           <button
-            className="bg-black transition text-white mt-10 px-3 py-1 slef-end rounded-sm animate-pulse hover:bg-transparent hover:text-black"
+            className="bg-black transition text-white mt-10 px-3 py-1
+            rounded-sm animate-pulse self-end hover:animate-none"
             onClick={() => router.push(`/blogs/${blog._id}`)}
           >
             read more

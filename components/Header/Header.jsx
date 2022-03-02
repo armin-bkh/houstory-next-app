@@ -40,7 +40,7 @@ const Header = () => {
         <button
           onClick={clickHandler}
           className="ml-auto hidden md:block bg-black px-3
-         md:px-5 py-1 rounded-sm text-white hover:outline-offset-2
+          md:px-5 py-1 rounded-sm text-white hover:outline-offset-2
           outline-2 hover:outline hover:outline-black"
         >
           {auth ? "sign out" : "login"}
